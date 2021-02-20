@@ -8,3 +8,15 @@ export type User = {
   id: number
   name: string
 }
+
+export type Item = {
+  name: string
+  price: number
+  image: string
+}
+
+export type Category = {
+  id: string
+  name: string
+  items: Item[]
+}

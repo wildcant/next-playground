@@ -11,7 +11,7 @@ export const Fonts = () => (
         font-display: swap;
         src: url(/fonts/Noto_Sans_JP/NotoSansJP-Regular.otf);
       }
-      
+
       @font-face {
         font-family: 'NotoSans';
         font-style: normal;
@@ -19,7 +19,7 @@ export const Fonts = () => (
         font-display: swap;
         src: url(/fonts/Noto_Sans_JP/NotoSansJP-Bold.otf);
       }
-      
+
       @font-face {
         font-family: 'NotoSans';
         font-style: normal;
@@ -39,3 +39,4 @@ const theme = extendTheme({
 })
 
 export default theme
+

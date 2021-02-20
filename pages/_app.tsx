@@ -1,6 +1,6 @@
-import { AppProps } from "next/app";
-import { ThemeProvider, CSSReset } from "@chakra-ui/react";
-import theme, { Fonts } from '../theme'
+import { AppProps } from 'next/app'
+import { ThemeProvider, CSSReset } from '@chakra-ui/react'
+import theme, { Fonts } from '../theme/index'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -9,5 +9,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Fonts />
       <Component {...pageProps} />
     </ThemeProvider>
-  );
+  )
 }
