@@ -14,7 +14,7 @@ const Layout = ({
   title = 'This is the default title',
   header = true
 }: Props) => (
-  <Container paddingX="4" paddingY="6" minH="100vh">
+  <Container as="main" paddingX="4" paddingY="6" minH="100vh">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />

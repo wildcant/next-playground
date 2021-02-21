@@ -1,9 +1,9 @@
-import 'swiper/swiper-bundle.css'
-import SwiperCore, { A11y, Navigation, Pagination, Scrollbar } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Box, Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 import { Ref } from 'react'
+import SwiperCore, { A11y, Navigation, Pagination, Scrollbar } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
 
 type Props = {
   images: string[]
@@ -14,7 +14,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const SlideShow = ({ images, heroImageRef }: Props) => (
   <Flex height="100%">
-    <style global jsx>{`
+    <style jsx global>{`
       .swiper-container {
         width: 100%;
         max-width: 500px;
@@ -39,7 +39,7 @@ const SlideShow = ({ images, heroImageRef }: Props) => (
         -webkit-align-items: center;
         align-items: center;
       }
-      .swiper-pagination-bullet-active {
+      span.swiper-pagination-bullet-active {
         background-color: #000;
       }
     `}</style>

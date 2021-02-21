@@ -1,13 +1,18 @@
+import { ChakraProvider, CSSReset } from '@chakra-ui/react'
 import { AppProps } from 'next/app'
-import { ThemeProvider, CSSReset } from '@chakra-ui/react'
-import theme, { Fonts } from '../theme/index'
+import { defaultValues, SharedStateProvider } from '../context'
+import { Fonts, theme } from '../theme/index'
+import { loadValues } from '../utils/localStorage'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const persistedState = loadValues()
   return (
-    <ThemeProvider theme={theme}>
-      <CSSReset />
-      <Fonts />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <SharedStateProvider initialState={{ ...defaultValues, ...persistedState }}>
+      <ChakraProvider theme={theme}>
+        <CSSReset />
+        <Fonts />
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </SharedStateProvider>
   )
 }

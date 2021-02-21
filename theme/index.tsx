@@ -1,5 +1,5 @@
-import { Global } from '@emotion/react'
 import { extendTheme } from '@chakra-ui/react'
+import { Global } from '@emotion/react'
 
 export const Fonts = () => (
   <Global
@@ -31,11 +31,19 @@ export const Fonts = () => (
   />
 )
 
-const theme = extendTheme({
+export const theme = extendTheme({
+  styles: {
+    global: {
+      html: {
+        height: '100%'
+      },
+      body: {
+        height: '100%'
+      }
+    }
+  },
   fonts: {
     heading: 'NotoSans',
     body: 'NotoSans'
   }
 })
-
-export default theme
