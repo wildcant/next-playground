@@ -10,9 +10,11 @@ export type User = {
 }
 
 export type Item = {
+  id: string
+  categoryId: string
   name: string
   price: number
-  image: string
+  images: string[]
 }
 
 export type Category = {
