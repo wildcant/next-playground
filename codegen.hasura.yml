@@ -1,0 +1,13 @@
+overwrite: true
+schema:
+  - https://learn-hasura-wildt.herokuapp.com/v1/graphql:
+      headers:
+        Authorization: Bearer ${NEXT_PUBLIC_HASURA_ACCESS_TOKEN}
+generates:
+  ./lib/schema.graphql:
+    plugins:
+      - 'schema-ast'
+  ./lib/schema.d.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
