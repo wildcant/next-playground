@@ -1,0 +1,20 @@
+query GetUserById($id: Int!) {
+  user(id: $id) {
+    id
+    name
+  }
+}
+
+subscription GetOnlineUsers {
+  onlineUsers {
+    id
+    lastSeen
+  }
+}
+
+mutation UpdateUserOnline($id: Int!) {
+  userUpdate(_set: {lastSeen: "now()"}, pk_columns: {id: $id}) {
+    id
+    name
+  }
+}

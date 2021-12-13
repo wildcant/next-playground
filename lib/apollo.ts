@@ -25,31 +25,34 @@ const requestAccessToken = async () => {
 
 const createHttpLink = headers =>
   new HttpLink({
-    uri: 'https://learn-hasura-wildt.herokuapp.com/v1/graphql',
+    uri: `${process.env.NEXT_PUBLIC_HASURA_HOST}/v1/graphql`,
     credentials: 'include',
     headers: {
       ...headers,
-      authorization: `Bearer ${process.env.NEXT_PUBLIC_HASURA_ACCESS_TOKEN}`,
+      authorization: `Bearer ${process.env.HASURA_ADMIN_JWT}`,
     },
     fetch,
   })
 
 const createWSLink = () =>
   new WebSocketLink(
-    new SubscriptionClient('ws://learn-hasura-wildt.herokuapp.com/v1/graphql', {
-      lazy: true,
-      reconnect: true,
-      connectionParams: async () => {
-        await requestAccessToken() // happens on the client
-        return {
-          headers: {
-            authorization: `Bearer ${process.env.NEXT_PUBLIC_HASURA_ACCESS_TOKEN}`,
-            'x-hasura-admin-secret':
-              process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET,
-          },
-        }
+    new SubscriptionClient(
+      `${process.env.NEXT_PUBLIC_HASURA_HOST.replace('http', 'ws')}/v1/graphql`,
+      {
+        lazy: true,
+        reconnect: true,
+        connectionParams: async () => {
+          // await requestAccessToken() // happens on the client
+          return {
+            headers: {
+              authorization: `Bearer ${process.env.HASURA_ADMIN_JWT}`,
+              'x-hasura-admin-secret':
+                process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET,
+            },
+          }
+        },
       },
-    }),
+    ),
   )
 
 export function createApolloClient(initialState, headers) {

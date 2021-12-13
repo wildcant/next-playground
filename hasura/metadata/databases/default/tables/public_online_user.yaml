@@ -1,0 +1,18 @@
+table:
+  name: online_user
+  schema: public
+configuration:
+  custom_column_names:
+    id: id
+    last_seen: lastSeen
+  custom_name: onlineUser
+  custom_root_fields:
+    delete: onlineUsersDelete
+    delete_by_pk: onlineUserDelete
+    insert: onlineUsersInsert
+    insert_one: onlineUserInsert
+    select: onlineUsers
+    select_aggregate: onlineUsersAggregate
+    select_by_pk: onlineUser
+    update: onlineUsersUpdate
+    update_by_pk: onlineUserUpdate

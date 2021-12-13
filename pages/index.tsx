@@ -2,15 +2,19 @@ import {
   useGetOnlineUsersSubscription,
   useGetUserByIdQuery,
   useUpdateUserOnlineMutation,
-} from '../lib/user.graphql'
+} from '../lib/hasura/user.graphql'
 
 const Index = () => {
-  const userRes = useGetUserByIdQuery({variables: {id: '1'}})
+  const userRes = useGetUserByIdQuery({variables: {id: 1}})
   const onlineUsersRes = useGetOnlineUsersSubscription()
-  const [setUserOnline] = useUpdateUserOnlineMutation()
+  const [setUserOnline, setUserOnlineRes] = useUpdateUserOnlineMutation()
 
   const setOnline = async () => {
-    await setUserOnline({variables: {id: '2'}})
+    try {
+      await setUserOnline({variables: {id: 2}})
+    } catch (error) {
+      console.log({error})
+    }
   }
 
   if (userRes.error) {

@@ -7,8 +7,8 @@
     "test": "yarn codegen && jest",
     "start": "next start",
     "generate": "yarn camelize-hasura && yarn generate:hasura",
-    "generate:hasura": "graphql-codegen -r dotenv/config --config codegen.hasura.yml",
-    "camelize-hasura": "sh camelize.sh"
+    "generate:hasura": "graphql-codegen -r dotenv/config --config codegen.hasura.yml && sh scripts/rename-schema.sh",
+    "camelize-hasura": "sh scripts/camelize-hasura.sh"
   },
   "dependencies": {
     "@apollo/client": "^3.1.3",

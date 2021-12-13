@@ -1,0 +1,41 @@
+table:
+  name: user
+  schema: public
+configuration:
+  custom_column_names:
+    created_at: createdAt
+    email: email
+    id: id
+    last_seen: lastSeen
+    name: name
+    updated_at: updatedAt
+  custom_name: user
+  custom_root_fields:
+    delete: usersDelete
+    delete_by_pk: userDelete
+    insert: usersInsert
+    insert_one: userInsert
+    select: users
+    select_aggregate: usersAggregate
+    select_by_pk: user
+    update: usersUpdate
+    update_by_pk: userUpdate
+select_permissions:
+- permission:
+    columns:
+    - email
+    - id
+    - last_seen
+    - name
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - last_seen
+    - name
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user
